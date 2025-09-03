@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 
 /**
  * Represents a dialog box consisting of an ImageView to represent the speaker's face
@@ -33,6 +34,21 @@ public class DialogBox extends HBox {
         }
 
         dialog.setText(text);
+        dialog.setWrapText(true);
+
+        dialog.setMaxWidth(200.0);
+        dialog.setPrefWidth(Region.USE_COMPUTED_SIZE);
+        dialog.setMinWidth(50.0);
+        dialog.setMaxHeight(Double.MAX_VALUE);  // Allow unlimited height
+        dialog.setPrefHeight(Region.USE_COMPUTED_SIZE);  // Let it calculate naturally
+        dialog.setMinHeight(Region.USE_PREF_SIZE);  // Use natural minimum
+
+        // Allow the HBox to expand vertically
+        this.setMaxWidth(Double.MAX_VALUE);
+        this.setMaxHeight(Double.MAX_VALUE);  // Important: Allow HBox to grow vertically
+        this.setFillHeight(true);  // Allow children to fill available height
+        this.setAlignment(Pos.BOTTOM_RIGHT);
+
         displayPicture.setImage(img);
     }
 
@@ -43,7 +59,8 @@ public class DialogBox extends HBox {
         ObservableList<Node> tmp = FXCollections.observableArrayList(this.getChildren());
         Collections.reverse(tmp);
         getChildren().setAll(tmp);
-        setAlignment(Pos.TOP_LEFT);
+        setAlignment(Pos.BOTTOM_LEFT);
+        dialog.getStyleClass().add("reply-label");
     }
 
     public static DialogBox getUserDialog(String text, Image img) {

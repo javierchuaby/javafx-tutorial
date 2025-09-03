@@ -20,8 +20,8 @@ public class MainWindow extends AnchorPane {
 
     private YourMom yourMom;
 
-    private Image userImage = new Image(this.getClass().getResourceAsStream("/images/icons8-user-96 (1).png"));
-    private Image momImage = new Image(this.getClass().getResourceAsStream("/images/icons8-user-96.png"));
+    private Image userImage = new Image(this.getClass().getResourceAsStream("/images/icons8-male-user-480.png"));
+    private Image momImage = new Image(this.getClass().getResourceAsStream("/images/icons8-user-480.png"));
 
     @FXML
     public void initialize() {
